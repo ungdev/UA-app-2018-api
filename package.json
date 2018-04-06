@@ -1,0 +1,16 @@
+{
+  "name": "intranet-ua-api",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "repository": "https://github.com/PymZoR/intranet-ua-api",
+  "author": "UNG",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/app.js",
+    "build:docker": "docker build -t intra-ua-api .",
+    "run:docker": "docker run -it -p 3000:3000 intra-ua-api"
+  },
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
