@@ -11,6 +11,8 @@
     "run:docker": "docker run -it -p 3000:3000 intra-ua-api"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "deckstrings": "^2.0.0",
+    "express": "^4.16.3",
+    "node-fetch": "^2.1.2"
   }
 }
