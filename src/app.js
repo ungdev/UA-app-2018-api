@@ -35,7 +35,7 @@ app.get(`/discord/:tag`,(req,res) => {
 });
 
 app.get(`/hs`, (req,res) => {
-  let decode = deck.decode('AAEBAR8GgAfFCKirAoW4AunSAobTAgyNAagCtQPJBJcI2wn+DPixAt3SAt/SAuPSAuHjAgA=');
+  let decode = deck.decode(req.get('deckString'));
   decode.heroes = hsdata[decode.heroes[0]];
   decode.cards = decode.cards.map(card => {
     card[0] = hsdata[card[0]];
@@ -45,9 +45,7 @@ app.get(`/hs`, (req,res) => {
 });
 
 app.get(`/test`, (req, res) => {
-  fetch('http://localhost:3000/')
-  .then(resu => resu.text())
-  .then(resu => res.send(resu));
+  res.send(req.get('test'));
 })
 
 app.listen(3000, () => {
