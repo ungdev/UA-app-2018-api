@@ -1,7 +1,7 @@
 const express = require('express');
 const app     = express();
-const fetch = require('node-fetch');
-const hsdata = require('./hsdata.json');
+const fetch   = require('node-fetch');
+const hsdata = require('./data.json');
 const deck = require('deckstrings');
 
 app.get('/', (req, res) => {
@@ -34,27 +34,15 @@ app.get(`/discord/:tag`,(req,res) => {
   .then(resp => res.send(resp));
 });
 
-app.get(`/hs`, async (req,res) => {
+app.get(`/hs`, (req,res) => {
   let decode = deck.decode('AAEBAR8GgAfFCKirAoW4AunSAobTAgyNAagCtQPJBJcI2wn+DPixAt3SAt/SAuPSAuHjAgA=');
-  decode.heroes = hsdata.filter(c => c.dbfId == decode.heroes)[0].cardClass;
-  const result = await transform(decode);
+  decode.heroes = hsdata[decode.heroes[0]];
+  decode.cards = decode.cards.map(card => {
+    card[0] = hsdata[card[0]];
+    return card
+  });
   res.send(decode);
 });
-
-function transform(decode) {
-  const setting = {'method' : 'GET', 'headers': {'X-Mashape-Key': 'KKeMUoux72mshBVVVdepau7O0IFTp1D9UagjsnJUmAAJ15rS7X'}};
-  return decode.cards.map(card => {
-    const dataCard = hsdata.filter(c => c.dbfId == card[0])[0];
-    fetch(`https://omgvamp-hearthstone-v1.p.mashape.com/cards/${dataCard.id}?locale=frFR`,setting)
-      .then(resp => resp.json())
-      .then(resp => {
-        card[0]= {name: dataCard.name, cost: dataCard.cost, rarity: dataCard.rarity, img: resp[0].img};
-        //console.log(card);
-        return card;
-      });
-      //console.log(card);
-    });
-}
 
 app.get(`/test`, (req, res) => {
   fetch('http://localhost:3000/')
