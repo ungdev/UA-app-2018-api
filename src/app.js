@@ -36,17 +36,19 @@ app.get(`/discord/:tag`,(req,res) => {
 
 app.get(`/hs`, (req,res) => {
   let decode = deck.decode(req.get('deckString'));
-  decode.heroes = hsdata[decode.heroes[0]];
-  decode.cards = decode.cards.map(card => {
-    card[0] = hsdata[card[0]];
-    return card
+  let result = {
+    hero: hsdata[decode.heroes[0]]
+  }
+  let cards = decode.cards.map(card => {
+    let c = {info: hsdata[card[0]], quantity: card[1]};
+    return c
   });
-  res.send(decode);
+  cards.sort((a,b) => {
+    return a.info.cost - b.info.cost
+  })
+  result.deck = cards;
+  res.send(result);
 });
-
-app.get(`/test`, (req, res) => {
-  res.send(req.get('test'));
-})
 
 app.listen(3000, () => {
     console.log('Example app listening on port 3000!')
