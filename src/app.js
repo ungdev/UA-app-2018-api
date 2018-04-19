@@ -3,6 +3,7 @@ const app     = express();
 const fetch   = require('node-fetch');
 const hsdata = require('./data.json');
 const deck = require('deckstrings');
+const players = require('./users.ua.json');
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -35,7 +36,7 @@ app.get(`/discord/:tag`,(req,res) => {
 });
 
 app.get(`/hs`, (req,res) => {
-  let decode = deck.decode(req.get('deckString'));
+  let decode = deck.decode(req.query.deckString);
   let result = {
     hero: hsdata[decode.heroes[0]]
   }
@@ -49,6 +50,62 @@ app.get(`/hs`, (req,res) => {
   result.deck = cards;
   res.send(result);
 });
+
+app.get('/players', (req,res) => {
+  players.sort((a,b) => {
+    return a.name.localeCompare(b.name)
+  });
+  res.send(players);
+});
+
+app.get('/players/:id', (req,res) => {
+  let player = players.filter(p => p.barcode === req.params.id.toString());
+  res.send(player[0]);
+});
+
+app.get('/teams',(req,res) => {
+  let teams = {};
+  players.forEach(p => {
+    if (p.spotlight !== null){
+      if (p.team in teams) {
+        teams[p.team].team_members.push(p.barcode);
+      } else {
+        teams[p.team] = {
+          id: p.teamId,
+          name: p.team,
+          spotlight: p.spotlight,
+          team_members: [p.barcode],
+          paid: p.paid
+        }
+      }
+    }
+  })
+  teams = Object.values(teams);
+  teams.sort((a,b) => {
+    return a.name.localeCompare(b.name)
+  });
+  res.send(teams);
+})
+
+app.get('/teams/:id',(req,res) => {
+  let teams = {};
+  players.forEach(p => {
+    if (p.spotlight !== null){
+      if (p.teamId in teams) {
+        teams[p.teamId].team_members.push(p.barcode);
+      } else {
+        teams[p.teamId] = {
+          id: p.teamId,
+          name: p.team,
+          spotlight: p.spotlight,
+          team_members: [p.barcode],
+          paid: p.paid
+        }
+      }
+    }
+  })
+  res.send(teams[req.params.id  ]);
+})
 
 app.listen(3000, () => {
     console.log('Example app listening on port 3000!')
