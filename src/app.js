@@ -5,33 +5,30 @@ const hsdata = require('./data.json');
 const deck = require('deckstrings');
 const players = require('./users.ua.json');
 
+const setting = {'method' : 'GET', 'headers': {'Authorization': 'Bot NDMzNjQ4NzU5OTA2NTAwNjE5.Da_fvA.WatrhCS9beI5vDazmC-YSFUSRto'}};
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-function parseDiscord(data,tag) {
-  let mmsg = data;
+const parseDiscord = async (tag) => {
+  let resp = await fetch('https://discordapp.com/api/channels/438370581650341889/messages',setting);
+  let msgs = await resp.json();
   if (tag) {
-    mmsg = mmsg.filter(msg => ((typeof msg.reactions !== 'undefined') && (msg.reactions[0].emoji.name === tag)));
+    msgs = msgs.filter(msg => ((typeof msg.reactions !== 'undefined') && (msg.reactions[0].emoji.name === tag)));
   }
-    return mmsg.map(msg => {
-      return {txt: msg.content,auteur:msg.author.username,date:msg.timestamp,tag};
+  return msgs.map(msg => {
+    return {txt: msg.content,auteur:msg.author.username,date:msg.timestamp,tag};
   })
 }
 
 app.get(`/discord`,(req,res) => {
-  const setting = {'method' : 'GET', 'headers': {'Authorization': 'Bot NDMzNjQ4NzU5OTA2NTAwNjE5.Da_fvA.WatrhCS9beI5vDazmC-YSFUSRto'}};
-  fetch('https://discordapp.com/api/channels/433711089461493760/messages',setting)
-  .then(resp => resp.json())
-  .then(resp => parseDiscord(resp))
+  parseDiscord()
   .then(resp => res.send(resp));
 });
 
 app.get(`/discord/:tag`,(req,res) => {
-  const setting = {'method' : 'GET', 'headers': {'Authorization': 'Bot NDMzNjQ4NzU5OTA2NTAwNjE5.Da_fvA.WatrhCS9beI5vDazmC-YSFUSRto'}};
-  fetch('https://discordapp.com/api/channels/433711089461493760/messages',setting)
-  .then(resp => resp.json())
-  .then(resp => parseDiscord(resp,req.params.tag))
+  parseDiscord(req.params.tag)
   .then(resp => res.send(resp));
 });
 
