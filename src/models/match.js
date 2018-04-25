@@ -1,13 +1,17 @@
 // TODO : BDD
-// schema :
-// {
-//      id:int
-//      toornament:int
-//      participants:[str]
-//      score:str
-//      result:str
-//      status:str 'todo' | 'doing' | 'done'
-// }
+/*
+const matchSchema = new Schema({
+  id: Number, (uuid())
+  discipline: String,
+  participants: [String],
+  score: String,
+  result: String,
+  status: {
+    type: String,
+    enum: ['todo','doing','done']
+  }
+})
+*/
 
 
 const matches = [

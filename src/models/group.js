@@ -1,14 +1,17 @@
 // TODO : BDD
-// schema :
-// {
-//      id:int
-//      toornament:int
-//      participants:[str]
-//      score:str
-//      result:str
-//      status:str 'todo' | 'doing' | 'done'
-// }
-
+/*
+const groupSchema = new Schema({
+  id: Number, (uuid())
+  toornament: Number,
+  participants: [String],
+  score: String,
+  result: String,
+  status: {
+    type: String,
+    enum: ['todo','doing','done']
+  }
+})
+*/
 
 const groups = [
     { id: 0, toornament: 0, participants: ['SuperEquipe', 'mumuxeTeam'], score: '16-2', result: 'mumuxeTeam', status: 'done' },

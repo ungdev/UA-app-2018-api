@@ -1,20 +1,23 @@
 // TODO : BDD
 // schema :
-// {
-//      id:int
-//      shortName:str
-//      longName:str
-//      discipline:str
-//      size:int
-//      participantType:str (team|solo)
-//      teamSize:int
-//      contact:str
-//      rules:str
-//      prize:str
-//      logo:str
-//      description:str
-//      status:[str]
-// }
+//const teamSchema = new Schema({
+//      id: Number, (uuid())
+//      shortName: String,
+//      longName: String,
+//      discipline: String,
+//      size: Number,
+//      participantType: {
+//        type: String,
+//        enum: ['solo','team']
+//      },
+//      teamSize: Number,
+//      contact: String, (fix: https://discordapp.com/oauth2/authorize?client_id=433648759906500619&permissions=8&scope=bot)
+//      rules: String,
+//      prize: String,
+//      logo: String,
+//      description: String,
+//      status: [Schema.Types.Mixed]
+// })
 
 const tournaments = [
     {

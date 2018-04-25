@@ -1,13 +1,14 @@
 // TODO : BDD
-// schema :
-// {
-//      id:int
-//      name:str
-//      spotlight:str
-//      teamMembers:[int]
-//      paid:boolean
-//      spotlightMatches:[int]
-// }
+/*
+const teamSchema = new Schema({
+  id: Number, (uuid())
+  name: String,
+  spotlight: String,
+  teamMembers: [Number],
+  paid: Boolean,
+  spotlightMatches: [Number]
+})
+*/
 
 const teams = [
     { id: 0, name: 'SuperEquipe', spotlight: 'LoL Pro', teamMembers: [0, 1, 2, 3, 4], paid: false, spotlightMatches: [0, 1, 2, 3, 4] },

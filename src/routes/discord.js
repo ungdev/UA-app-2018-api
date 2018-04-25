@@ -15,9 +15,9 @@ const parseDiscord = async (tag) => {
   })
 }
 
-router.get(`/discord`,(req,res) => {
-  parseDiscord()
-  .then(resp => res.send(resp));
+router.get(`/discord`,async (req,res) => {
+  const resp = await parseDiscord();
+  res.send(resp);
 });
 
 router.get(`/discord/:tag`,(req,res) => {

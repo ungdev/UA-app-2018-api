@@ -1,49 +1,49 @@
 // TODO : BDD
-// schema :
-// {
-//      id:int
-//      pseudo:str
-//      lastName:str
-//      firstName:str
-//      email:str
-//      team:str
-//      spotlight:str
-//      spotlightMatches:[match]
+//
+// const playerSchema = new Schema({
+//      id: Number,
+//      pseudo: String,
+//      lastName: String,
+//      firstName: String,
+//      email: String,
+//      team: String,
+//      spotlight: String,
+//      spotlightMatches: [Number] (id des matchs)
 //      inscription: {
-//          barcode:int,
-//          paid:boolean,
+//          barcode: Number,
+//          paid: Boolean,
 //          plusOne: {
-//             firstName:str,
-//              lastName:str
+//             firstName: String,
+//              lastName: String,
 //          }
-//          preSale:[Object]
+//          preSale:[Schema.Types.Mixed]
 //      },
 //      customs: {
 //          steam: {
-//              pseudo:str,
-//              games:[str]
+//              pseudo: String,
+//              games:[String]
 //          },
 //          hearthstone: {
-//              pseudo:str,
-//              deckStrings:[str]
+//              pseudo: String,
+//              deckStrings:[String]
 //          },
 //          lolPro: {
-//              pseudo:str,
-//              level:int
+//              pseudo: String,
+//              level: Number
 //          },
 //          lolAmateur: {
-//              pseudo:str,
-//              level:int
+//              pseudo: String,
+//              level: Number
 //          },
 //          csgo: {
-//              pseudo:str
+//              pseudo: String,
 //          },
 //          pubg: {
-//              pseudo:str,
-//              stats:Object
+//              pseudo: String,
+//              stats: Schema.Types.Mixed
 //          }
 //      }
-// }
+// })
 
 const players = [
 {
