@@ -1,6 +1,6 @@
 const express = require('express');
 const deck    = require('deckstrings');
-const hsdata  = require('../models/hsdata');
+const hsdata  = require('../models/data');
 
 const router = new express.Router();
 
