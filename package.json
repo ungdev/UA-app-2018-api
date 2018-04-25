@@ -15,6 +15,7 @@
     "deckstrings": "^2.0.0",
     "discord.js": "^11.3.2",
     "express": "^4.16.3",
-    "node-fetch": "^2.1.2"
+    "node-fetch": "^2.1.2",
+    "nodemon": "^1.17.3"
   }
 }

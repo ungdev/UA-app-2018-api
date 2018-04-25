@@ -1,4 +1,4 @@
-const setting = require('./BotSetting.json');
+const setting = require('../config/bot');
 const Discord = require('discord.js');
 const fetch = require('node-fetch');
 
