@@ -1,13 +1,18 @@
 // TODO : BDD
 /*
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const teamSchema = new Schema({
-  id: Number, (uuid())
+  id: Schema.Types.ObjectId,
   name: String,
-  spotlight: String,
-  teamMembers: [Number],
+  spotlight: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
+  teamMembers: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
   paid: Boolean,
   spotlightMatches: [Number]
 })
+
+var Team = mongoose.model('Team', teamSchema);
 */
 
 const teams = [

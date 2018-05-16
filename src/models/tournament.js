@@ -1,10 +1,13 @@
 // TODO : BDD
-// schema :
-//const teamSchema = new Schema({
-//      id: Number, (uuid())
+/*
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+*/
+//const toornamentSchema = new Schema({
+//      id: Schema.Types.ObjectId,
 //      shortName: String,
 //      longName: String,
-//      discipline: String,
+//      discipline: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
 //      size: Number,
 //      participantType: {
 //        type: String,
@@ -18,6 +21,8 @@
 //      description: String,
 //      status: [Schema.Types.Mixed]
 // })
+
+// var Toornament = mongoose.model('Toornament', toornamentSchema);
 
 const tournaments = [
     {

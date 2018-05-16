@@ -1,9 +1,12 @@
 // TODO : BDD
 /*
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const matchSchema = new Schema({
-  id: Number, (uuid())
-  discipline: String,
-  participants: [String],
+  id: Schema.Types.ObjectId,
+  discipline: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
+  participants: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
   score: String,
   result: String,
   status: {
@@ -11,6 +14,8 @@ const matchSchema = new Schema({
     enum: ['todo','doing','done']
   }
 })
+
+var Match = mongoose.model('Match', matchSchema);
 */
 
 

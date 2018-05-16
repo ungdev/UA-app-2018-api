@@ -1,9 +1,12 @@
 // TODO : BDD
 /*
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const groupSchema = new Schema({
-  id: Number, (uuid())
+  id: Schema.Types.ObjectId,
   toornament: Number,
-  participants: [String],
+  participants: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
   score: String,
   result: String,
   status: {
@@ -11,6 +14,8 @@ const groupSchema = new Schema({
     enum: ['todo','doing','done']
   }
 })
+
+var Group = mongoose.model('Group', groupSchema);
 */
 
 const groups = [

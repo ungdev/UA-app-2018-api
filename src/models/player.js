@@ -1,23 +1,29 @@
 // TODO : BDD
 //
+// const mongoose = require('mongoose');
+// const Schema = mongoose.Schema;
+/*
+const incriptionSchema = new Schema({
+  id: Schema.Types.ObjectId,
+  barcode: Number
+  paid: Boolean,
+  plusOne: {
+    firstName: String,
+    lastName: String,
+  }
+  preSale:[{ type: Schema.Types.ObjectId, ref: 'Sale' }
+})
+*/
 // const playerSchema = new Schema({
-//      id: Number,
+//      id: Schema.Types.ObjectId,
 //      pseudo: String,
 //      lastName: String,
 //      firstName: String,
 //      email: String,
-//      team: String,
-//      spotlight: String,
-//      spotlightMatches: [Number] (id des matchs)
-//      inscription: {
-//          barcode: Number,
-//          paid: Boolean,
-//          plusOne: {
-//             firstName: String,
-//              lastName: String,
-//          }
-//          preSale:[Schema.Types.Mixed]
-//      },
+//      team: { type: Schema.Types.ObjectId, ref: 'Team' },
+//      spotlight: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
+//      spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }]
+//      inscription: { type: Schema.Types.ObjectId, ref: 'Inscription' }
 //      customs: {
 //          steam: {
 //              pseudo: String,
@@ -44,6 +50,8 @@
 //          }
 //      }
 // })
+
+//var Player = mongoose.model('Player', playerSchema);
 
 const players = [
 {
