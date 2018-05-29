@@ -1,28 +1,24 @@
-// TODO : BDD
-/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-*/
-//const toornamentSchema = new Schema({
-//      id: Schema.Types.ObjectId,
-//      shortName: String,
-//      longName: String,
-//      discipline: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
-//      size: Number,
-//      participantType: {
-//        type: String,
-//        enum: ['solo','team']
-//      },
-//      teamSize: Number,
-//      contact: String, (fix: https://discordapp.com/oauth2/authorize?client_id=433648759906500619&permissions=8&scope=bot)
-//      rules: String,
-//      prize: String,
-//      logo: String,
-//      description: String,
-//      status: [Schema.Types.Mixed]
-// })
+const tournamentSchema = new Schema({
+      shortName: String,
+      longName: String,
+      discipline: { type: String, enum:['LoL','CS:GO','HS'] },
+      size: Number,
+      participantType: {
+        type: String,
+        enum: ['solo','team']
+      },
+      teamSize: Number,
+      contact: { type: String, default: 'https://discordapp.com/oauth2/authorize?client_id=433648759906500619&permissions=8&scope=bot' },
+      rules: String,
+      prize: String,
+      logo: String,
+      description: String,
+      status: [Schema.Types.Mixed]
+})
 
-// var Toornament = mongoose.model('Toornament', toornamentSchema);
+const tournament = mongoose.model('tournament', tournamentSchema);
 
 const tournaments = [
     {
@@ -71,4 +67,4 @@ const tournaments = [
     },
 ];
 
-module.exports = tournaments;
+module.exports = tournament;

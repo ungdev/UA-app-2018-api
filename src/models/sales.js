@@ -1,17 +1,15 @@
-/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const saleSchema = new Schema({
-  id: Schema.Types.ObjectId,
   name: String,
   price: Number
-})
+});
 
-var Sale = mongoose.model('Sale', saleSchema);
-*/
+const sale = mongoose.model('sale', saleSchema);
+
 
 const sales = [
 ]
 
-module.exports = sales;
+module.exports = sale;

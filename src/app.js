@@ -2,6 +2,9 @@ const express = require('express');
 const config  = require('../config/api');
 const app     = express();
 const routes  = require('./routes');
+const mongoose = require('mongoose');
+
+mongoose.connect(config.uri);
 
 app.use('/', routes);
 

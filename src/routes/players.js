@@ -1,24 +1,28 @@
 const express = require('express');
 const models  = require('../models');
+const mongoose = require('mongoose');
 
 const router = new express.Router();
 
 router.get('/players', (req, res, next) => {
-    res
-        .status(200)
-        .json(models.player)
-        .end();
+  models.player.find((err,players) => res
+    .status(200)
+    .json(players)
+    .end())
 });
 
 router.get('/players/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
-
-    const players = models.player.filter(player => player.id === id);
-
-    res
+    const player = models.player.findOne({_id: id}).cast;
+    if (player) {
+      res
         .status(200)
-        .json(players)
-        .end();
+        .json(player)
+        .end()
+    } else {
+      res
+        .status(204)
+    }
 });
 
 module.exports = router;

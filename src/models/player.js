@@ -1,57 +1,55 @@
-// TODO : BDD
-//
-// const mongoose = require('mongoose');
-// const Schema = mongoose.Schema;
-/*
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
 const incriptionSchema = new Schema({
-  id: Schema.Types.ObjectId,
-  barcode: Number
+  barcode: Number,
   paid: Boolean,
   plusOne: {
     firstName: String,
     lastName: String,
-  }
-  preSale:[{ type: Schema.Types.ObjectId, ref: 'Sale' }
-})
-*/
-// const playerSchema = new Schema({
-//      id: Schema.Types.ObjectId,
-//      pseudo: String,
-//      lastName: String,
-//      firstName: String,
-//      email: String,
-//      team: { type: Schema.Types.ObjectId, ref: 'Team' },
-//      spotlight: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
-//      spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }]
-//      inscription: { type: Schema.Types.ObjectId, ref: 'Inscription' }
-//      customs: {
-//          steam: {
-//              pseudo: String,
-//              games:[String]
-//          },
-//          hearthstone: {
-//              pseudo: String,
-//              deckStrings:[String]
-//          },
-//          lolPro: {
-//              pseudo: String,
-//              level: Number
-//          },
-//          lolAmateur: {
-//              pseudo: String,
-//              level: Number
-//          },
-//          csgo: {
-//              pseudo: String,
-//          },
-//          pubg: {
-//              pseudo: String,
-//              stats: Schema.Types.Mixed
-//          }
-//      }
-// })
+  },
+  preSale:[{ type: Schema.Types.ObjectId, ref: 'Sale' }]
+});
 
-//var Player = mongoose.model('Player', playerSchema);
+const playerSchema = new Schema({
+    id: Schema.Types.ObjectId,
+    pseudo: String,
+    lastName: String,
+    firstName: String,
+    email: String,
+    team: { type: Schema.Types.ObjectId, ref: 'Team' },
+    spotlight: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
+    spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }],
+    inscription: { type: Schema.Types.ObjectId, ref: 'Inscription' },
+    customs: {
+        steam: {
+            pseudo: String,
+            games:[String]
+        },
+        hearthstone: {
+            pseudo: String,
+            deckStrings:[String]
+        },
+        lolPro: {
+             pseudo: String,
+             level: Number
+        },
+        lolAmateur: {
+            pseudo: String,
+            level: Number
+        },
+        csgo: {
+            pseudo: String,
+        },
+        pubg: {
+            pseudo: String,
+            stats: Schema.Types.Mixed
+        }
+    }
+});
+
+const player = mongoose.model('player', playerSchema);
+const inscription = mongoose.model('inscription', playerSchema);
 
 const players = [
 {
@@ -112,4 +110,5 @@ const players = [
 }
 ];
 
-module.exports = players;
+module.exports = player;
+module.exports = inscription;

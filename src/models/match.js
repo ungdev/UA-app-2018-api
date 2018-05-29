@@ -1,22 +1,18 @@
-// TODO : BDD
-/*
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const matchSchema = new Schema({
-  id: Schema.Types.ObjectId,
-  discipline: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
-  participants: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
+  tournament: { type: Schema.Types.ObjectId, ref: 'tournament' },
+  participants: [{ type: Schema.Types.ObjectId, ref: 'team' }],
   score: String,
   result: String,
   status: {
     type: String,
     enum: ['todo','doing','done']
   }
-})
+});
 
-var Match = mongoose.model('Match', matchSchema);
-*/
+const match = mongoose.model('match', matchSchema);
 
 
 const matches = [
@@ -25,4 +21,4 @@ const matches = [
     { id: 2, toornament: 2, participants: ['JeanBétonnière', 'mangeCaca'], score: '', result: '', status: 'doing' }
 ]
 
-module.exports = matches;
+module.exports = match;
