@@ -1,17 +1,15 @@
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const teamSchema = new Schema({
-  id: Schema.Types.ObjectId,
   name: String,
-  tournament: { type: Schema.Types.ObjectId, ref: 'tournament' },
-  teamMembers: [{ type: Schema.Types.ObjectId, ref: 'player' }],
+  tournament: { type: Schema.Types.ObjectId, ref: 'Tournament' },
+  teamMembers: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
   paid: Boolean,
-  spotlightMatches: [Number]
+  spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }]
 });
 
-const team = mongoose.model('team', teamSchema);
+const team = mongoose.model('Team', teamSchema);
 
 const teams = [
     { id: 0, name: 'SuperEquipe', spotlight: 'LoL Pro', teamMembers: [0, 1, 2, 3, 4], paid: false, spotlightMatches: [0, 1, 2, 3, 4] },

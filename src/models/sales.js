@@ -6,7 +6,7 @@ const saleSchema = new Schema({
   price: Number
 });
 
-const sale = mongoose.model('sale', saleSchema);
+const sale = mongoose.model('Sale', saleSchema);
 
 
 const sales = [

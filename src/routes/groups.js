@@ -11,14 +11,19 @@ router.get('/groups', (req, res, next) => {
 });
 
 router.get('/groups/:id', (req, res, next) => {
-    const id = parseInt(req.params.id);
-
-    const groups = models.group.filter(group => group.id === id);
-
-    res
+  const id = req.params.id;
+  models.group.where({_id: id}).findOne((err,group) => {
+    if (group) {
+      res
         .status(200)
         .json(group)
-        .end();
+        .end()
+    } else {
+      res
+        .status(204)
+        .end()
+    }
+  });
 });
 
 module.exports = router;

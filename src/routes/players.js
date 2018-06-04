@@ -12,8 +12,8 @@ router.get('/players', (req, res, next) => {
 });
 
 router.get('/players/:id', (req, res, next) => {
-    const id = parseInt(req.params.id);
-    const player = models.player.findOne({_id: id}).cast;
+  const id = req.params.id;
+  models.player.where({_id: id}).findOne((err,player) => {
     if (player) {
       res
         .status(200)
@@ -22,7 +22,9 @@ router.get('/players/:id', (req, res, next) => {
     } else {
       res
         .status(204)
+        .end()
     }
+  });
 });
 
 module.exports = router;

@@ -1,25 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const incriptionSchema = new Schema({
-  barcode: Number,
-  paid: Boolean,
-  plusOne: {
-    firstName: String,
-    lastName: String,
-  },
-  preSale:[{ type: Schema.Types.ObjectId, ref: 'Sale' }]
-});
-
 const playerSchema = new Schema({
-    id: Schema.Types.ObjectId,
     pseudo: String,
     lastName: String,
     firstName: String,
     email: String,
     team: { type: Schema.Types.ObjectId, ref: 'Team' },
-    spotlight: { type: Schema.Types.ObjectId, ref: 'Spotlight' },
-    spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }],
     inscription: { type: Schema.Types.ObjectId, ref: 'Inscription' },
     customs: {
         steam: {
@@ -48,8 +35,7 @@ const playerSchema = new Schema({
     }
 });
 
-const player = mongoose.model('player', playerSchema);
-const inscription = mongoose.model('inscription', playerSchema);
+const player = mongoose.model('Player', playerSchema);
 
 const players = [
 {
@@ -111,4 +97,3 @@ const players = [
 ];
 
 module.exports = player;
-module.exports = inscription;

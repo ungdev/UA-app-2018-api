@@ -12,17 +12,19 @@ router.get('/matches', (req, res, next) => {
 });
 
 router.get('/matches/:id', (req, res, next) => {
-  const id = parseInt(req.params.id);
-  const match = models.match.findOne({_id: id}).cast;
-  if (match) {
-    res
-      .status(200)
-      .json(match)
-      .end()
-  } else {
-    res
-      .status(204)
-  }
+  const id = req.params.id;
+  models.match.where({_id: id}).findOne((err,match) => {
+    if (match) {
+      res
+        .status(200)
+        .json(match)
+        .end()
+    } else {
+      res
+        .status(204)
+        .end()
+    }
+  });
 });
 
 module.exports = router;

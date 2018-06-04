@@ -12,17 +12,19 @@ router.get('/tournaments', (req, res, next) => {
 });
 
 router.get('/tournaments/:id', (req, res, next) => {
-  const id = parseInt(req.params.id);
-  const tournament = models.player.findOne({_id: id}).cast;
-  if (tournament) {
-    res
-      .status(200)
-      .json(tournament)
-      .end()
-  } else {
-    res
-      .status(204)
-  }
+  const id = req.params.id;
+  models.tournament.where({_id: id}).findOne((err,tournament) => {
+    if (tournament) {
+      res
+        .status(200)
+        .json(tournament)
+        .end()
+    } else {
+      res
+        .status(204)
+        .end()
+    }
+  });
 });
 
 router.get('/tournaments/:id/players', (req, res, next) => {

@@ -12,17 +12,19 @@ router.get('/teams', (req, res, next) => {
 });
 
 router.get('/teams/:id', (req, res, next) => {
-  const id = parseInt(req.params.id);
-  const team = models.team.findOne({_id: id}).cast;
-  if (team) {
-    res
-      .status(200)
-      .json(team)
-      .end()
-  } else {
-    res
-      .status(204)
-  }
+  const id = req.params.id;
+  models.team.where({_id: id}).findOne((err,team) => {
+    if (team) {
+      res
+        .status(200)
+        .json(team)
+        .end()
+    } else {
+      res
+        .status(204)
+        .end()
+    }
+  });
 });
 
 module.exports = router;

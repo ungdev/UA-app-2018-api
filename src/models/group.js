@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const groupSchema = new Schema({
   tournament: Number,
-  participants: [{ type: Schema.Types.ObjectId, ref: 'team' }],
+  participants: [{ type: Schema.Types.ObjectId, ref: 'Team' }],
   score: String,
   result: String,
   status: {
@@ -14,7 +14,7 @@ const groupSchema = new Schema({
   }
 })
 
-const group = mongoose.model('group', groupSchema);
+const group = mongoose.model('Group', groupSchema);
 
 const groups = [
     { id: 0, toornament: 0, participants: ['SuperEquipe', 'mumuxeTeam'], score: '16-2', result: 'mumuxeTeam', status: 'done' },

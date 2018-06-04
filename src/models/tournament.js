@@ -3,22 +3,21 @@ const Schema = mongoose.Schema;
 const tournamentSchema = new Schema({
       shortName: String,
       longName: String,
-      discipline: { type: String, enum:['LoL','CS:GO','HS'] },
+      discipline: { type: String, enum:['LoL','CS:GO','HS','Libre'] },
       size: Number,
       participantType: {
         type: String,
         enum: ['solo','team']
       },
       teamSize: Number,
-      contact: { type: String, default: 'https://discordapp.com/oauth2/authorize?client_id=433648759906500619&permissions=8&scope=bot' },
+      contact: { type: String, default: 'https://discordapp.com/invite/Emyn2cJ' },
       rules: String,
-      prize: String,
+      prize: Number,
       logo: String,
-      description: String,
-      status: [Schema.Types.Mixed]
+      description: String
 })
 
-const tournament = mongoose.model('tournament', tournamentSchema);
+const tournament = mongoose.model('Tournament', tournamentSchema);
 
 const tournaments = [
     {
