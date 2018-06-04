@@ -13,18 +13,21 @@ router.get('/teams', (req, res, next) => {
 
 router.get('/teams/:id', (req, res, next) => {
   const id = req.params.id;
-  models.team.where({_id: id}).findOne((err,team) => {
-    if (team) {
-      res
-        .status(200)
-        .json(team)
-        .end()
-    } else {
-      res
-        .status(204)
-        .end()
-    }
-  });
+  models.team.findOne({_id: id})
+    .populate('tournament')
+    .populate('teamMembers')
+    .exec((err,team) => {
+      if (team) {
+        res
+          .status(200)
+          .json(team)
+          .end()
+      } else {
+        res
+          .status(204)
+          .end()
+      }
+    });
 });
 
 module.exports = router;

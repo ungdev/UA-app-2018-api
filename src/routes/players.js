@@ -13,17 +13,19 @@ router.get('/players', (req, res, next) => {
 
 router.get('/players/:id', (req, res, next) => {
   const id = req.params.id;
-  models.player.where({_id: id}).findOne((err,player) => {
-    if (player) {
-      res
-        .status(200)
-        .json(player)
-        .end()
-    } else {
-      res
-        .status(204)
-        .end()
-    }
+  models.player.findOne({_id: id})
+    .populate('team')
+    .exec((err,player) => {
+      if (player) {
+        res
+          .status(200)
+          .json(player)
+          .end()
+      } else {
+        res
+          .status(204)
+          .end()
+      }
   });
 });
 
