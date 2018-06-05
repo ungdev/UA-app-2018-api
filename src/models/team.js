@@ -6,7 +6,9 @@ const teamSchema = new Schema({
   tournament: { type: Schema.Types.ObjectId, ref: 'Tournament' },
   teamMembers: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
   paid: Boolean,
-  spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }]
+  spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }],
+  idTournamentToor: String,
+  idParticipantToor: String
 });
 
 const team = mongoose.model('Team', teamSchema);
