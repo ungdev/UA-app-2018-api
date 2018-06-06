@@ -7,7 +7,6 @@ const teamSchema = new Schema({
   teamMembers: [{ type: Schema.Types.ObjectId, ref: 'Player' }],
   paid: Boolean,
   spotlightMatches: [{ type: Schema.Types.ObjectId, ref: 'Match' }],
-  idTournamentToor: String,
   idParticipantToor: String
 });
 

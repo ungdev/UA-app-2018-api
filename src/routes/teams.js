@@ -40,8 +40,9 @@ router.get('/teams/:id', (req, res, next) => {
 router.get('/teams/:id/matches', async (req, res, next) => {
   const id = req.params.id;
   models.team.findOne({_id: id})
+    .populate('tournament')
     .exec(async (err,team) => {
-      const matches = await matchesToornament(team.idTournamentToor,team.idParticipantToor);
+      const matches = await matchesToornament(team.tournament.idTournamentToor,team.idParticipantToor);
       if (matches) {
         res
           .status(200)

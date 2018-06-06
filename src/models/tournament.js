@@ -14,7 +14,8 @@ const tournamentSchema = new Schema({
       rules: String,
       prize: Number,
       logo: String,
-      description: String
+      description: String,
+      idTournamentToor: String
 })
 
 const tournament = mongoose.model('Tournament', tournamentSchema);

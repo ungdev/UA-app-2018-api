@@ -40,9 +40,12 @@ router.get('/players/:id', (req, res, next) => {
 router.get('/players/:id/matches', async (req, res, next) => {
   const id = req.params.id;
   models.player.findOne({_id: id})
-    .populate('team')
+    .populate({
+        path: 'team',
+        populate: { path: 'tournament' }
+      })
     .exec(async (err,player) => {
-      const matches = await matchesToornament(player.team.idTournamentToor,player.team.idParticipantToor);
+      const matches = await matchesToornament(player.team.tournament.idTournamentToor,player.team.idParticipantToor);
       if (matches) {
         res
           .status(200)
