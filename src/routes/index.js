@@ -5,6 +5,7 @@ const router = new express.Router();
 router.get('/', (req, res) => res.status(200).json({}).end() );
 
 router
+    .use('/', require('./hearthstone'))
     .use('/', require('./teams'))
     .use('/', require('./matches'))
     .use('/', require('./groups'))

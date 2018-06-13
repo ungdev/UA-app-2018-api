@@ -2,3 +2,5 @@ node_modules/
 img/
 src/users.ua.json
 package-lock.json
+data/
+data/imgs
