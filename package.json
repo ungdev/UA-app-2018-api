@@ -6,7 +6,8 @@
   "author": "UNG",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"nodemon src/app.js\" \"node src/bot.js\"",
+    "start": "concurrently \"node src/app.js\" \"node src/bot.js\"",
+    "dev": "concurrently \"nodemon src/app.js\" \"node src/bot.js\"",
     "build:docker": "docker build -t intra-ua-api .",
     "run:docker": "docker run -it -p 3000:3000 intra-ua-api"
   },

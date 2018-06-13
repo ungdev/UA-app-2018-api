@@ -31,14 +31,14 @@ router.get('/hsdata', async (req, res) => {
 
   if (!fs.existsSync(dataPath)) {
     await new Promise((resolve, reject) => {
-      let stream = request.get(`https://api.hearthstonejson.com/v1/latest/frFR/cards.json`).pipe(fs.createWriteStream(dataPath));
-      stream.on('finish', () => {
-        resolve()
-      })
+      let stream = request.get(`https://api.hearthstonejson.com/v1/latest/frFR/cards.json`)
+        .pipe(fs.createWriteStream(dataPath))
+        .on('error', err => console.error(err))
+        .on('finish', () => resolve());
     })
   }
 
-  res.json(require(dataPath))
+  res.json(require(dataPath));
 })
 
 router.get('/cardImage/:cardId.png', async (req, res) => {
@@ -52,7 +52,7 @@ router.get('/cardImage/:cardId.png', async (req, res) => {
         .pipe(fs.createWriteStream(cardImagePath))
         .on('error', err => console.error(err))
         .on('finish', () => resolve());
-    })
+    });
   }
 
   res.sendFile(cardImagePath);
