@@ -6,7 +6,7 @@ const settings = require('../../config/toornament.json');
 const router = new express.Router();
 
 const matchesToornament = async(idTournament,idParticipant) => {
-  const resp = await fetch(`https://api.toornament.com/viewer/v2/tournaments/${idTournament}/matches?participant_ids=${idParticipant}`,settings);
+  const resp = await fetch(`https://api.toornament.com/viewer/v2/tournaments/${idTournament}/matches?participant_ids=${idParticipant}`,settings.matches);
   const matches = await resp.json();
   return matches;
 }

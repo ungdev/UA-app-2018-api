@@ -24,7 +24,10 @@ Serveur discord test : https://discord.gg/xg2v4Pb (Discord API)
 `/teams/:id` : return specific team\
 `/teams/:id/matches` : return all team matchs (with toornament API)
 
-Other:
-`/tournaments`\
+`/tournaments` : return all teams\
+`/tournaments/:id` : return specific team\
+`/tournaments/:id/discipline` : Return a discipline with the detail of his features.  (with toornament API)
+
+Other:\
 `/groups`\
 `/matches`

@@ -34,11 +34,11 @@ bot.on("message", async message => {
   };
     const setting = {method: "POST", body: JSON.stringify(text), headers: { 'Content-Type': 'application/json' }}
     fetch("https://hooks.slack.com/services/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",setting);
-
+    console.log(msg);
     message.channel.send("Votre message a été envoyé aux respos :wink:");
 
   } else if (message.channel.type === "dm"){
-      message.channel.send("Utilise une commande avec `![commande]` pour communiquer avec le staff\nRappel des commandes: staff, lol, hs, ow")
+      message.channel.send("Utilise une commande avec `![commande]` pour communiquer avec le staff\nRappel des commandes: " + setting.staffTag.join(', '))
   }
 })
 bot.login(setting.token);

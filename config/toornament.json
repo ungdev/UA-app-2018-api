@@ -1,8 +1,18 @@
 {
-    "method" : "GET",
-    "headers":
-    {
-        "X-Api-Key": "j8QQDJz37CBY-5q_v9o7Wc0jyfaIkkqxATtax35--oM",
-        "Range": "matches=0-127"
+    "matches": {
+        "method" : "GET",
+        "headers":
+        {
+            "X-Api-Key": "j8QQDJz37CBY-5q_v9o7Wc0jyfaIkkqxATtax35--oM",
+            "Range": "matches=0-127"
+        }
+    },
+    "discipline": {
+        "method" : "GET",
+        "headers":
+        {
+            "X-Api-Key": "j8QQDJz37CBY-5q_v9o7Wc0jyfaIkkqxATtax35--oM"
+        }
     }
+
 }

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const tournamentSchema = new Schema({
       shortName: String,
       longName: String,
-      discipline: { type: String, enum:['LoL','CS:GO','HS','Libre'] },
+      disciplineId: String,
       size: Number,
       participantType: {
         type: String,
@@ -15,7 +15,7 @@ const tournamentSchema = new Schema({
       prize: Number,
       logo: String,
       description: String,
-      idTournamentToor: String
+      idTournamentToor: String,
 })
 
 const tournament = mongoose.model('Tournament', tournamentSchema);
