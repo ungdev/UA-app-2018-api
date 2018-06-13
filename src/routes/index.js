@@ -12,6 +12,7 @@ router
     .use('/', require('./sales'))
     .use('/', require('./tournaments'))
     .use('/', require('./players'))
+    .use('/auth', require('./auth'))
     .use('/',require('./discord'));
 
 module.exports = router;
