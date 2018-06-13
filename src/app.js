@@ -6,6 +6,7 @@ const cookieSession = require('cookie-session');
 const config        = require('../config/api');
 const routes        = require('./routes');
 const auth          = require('./auth');
+require('dotenv').config()
 
 mongoose.connect(config.uri);
 

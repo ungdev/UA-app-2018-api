@@ -1,5 +1,8 @@
 {
-    "clientID": "442530631855-c4tiavgkni5eai1dpkvhjhbkjghlgii7.apps.googleusercontent.com",
-    "clientSecret": "euFzPEP8mLphfteA1jEgG7fC",
-    "callbackURL": "http://localhost:3000/auth/google/callback"
+    "google": {
+        "callbackURL": "http://localhost:3000/auth/google/callback"
+    },
+    "etuUTT": {
+        "callbackURL": "http://localhost:3000/auth/etuUTT/callback"
+    }
 }

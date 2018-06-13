@@ -4,3 +4,4 @@ src/users.ua.json
 package-lock.json
 data/*.json
 data/imgs/*.png
+.env
