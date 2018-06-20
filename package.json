@@ -26,6 +26,7 @@
     "passport-google-oauth": "^1.0.0",
     "passport-oauth": "^1.0.0",
     "request": "^2.87.0",
+    "request-promise-native": "^1.0.5",
     "uuid": "^3.2.1"
   }
 }

@@ -1,8 +1,8 @@
 {
     "google": {
-        "callbackURL": "http://localhost:3000/auth/google/callback"
+        "callbackURL": "http://localhost:8000/auth/google/callback"
     },
     "etuUTT": {
-        "callbackURL": "http://localhost:3000/auth/etuUTT/callback"
+        "callbackURL": "http://localhost:8000/auth/etuUTT/callback"
     }
 }

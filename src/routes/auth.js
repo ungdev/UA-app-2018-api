@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         res
             .status(200)
             .json({
-                logged: true
+                displayName: req.session.displayName
             });
     } else {
         res.cookie('token', '')
@@ -33,6 +33,7 @@ router.get('/etuUTT', passport.authenticate('etuUTT', {
 
 router.get('/etuUTT/callback', passport.authenticate('etuUTT', { failureRedirect: '/auth' }), (req, res) => {
     req.session.token = req.user.token;
+    console.log(req.user);
     res.redirect('/auth');
 });
 
@@ -43,7 +44,8 @@ router.get('/google', passport.authenticate('google', {
 
 router.get('/google/callback', passport.authenticate('google', { failureRedirect: '/auth' }), (req, res) => {
     req.session.token = req.user.token;
-    res.redirect('/auth');
+    req.session.displayName = req.user.profile.displayName;
+    res.redirect('http://localhost:3000/');
 });
 
 module.exports = router;

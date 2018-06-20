@@ -1,5 +1,6 @@
 const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 const OAuth2Strategy = require('passport-oauth').OAuth2Strategy;
+const request = require('request-promise-native');
 const config = require('../config/oauth');
 
 module.exports = (passport) => {
@@ -17,7 +18,9 @@ module.exports = (passport) => {
         clientID: process.env.ETUUTT_OAUTH_CLIENTID,
         clientSecret: process.env.ETUUTT_OAUTH_CLIENTSECRET,
         callbackURL: config.etuUTT.callbackURL
-    }, (accessToken, refreshToken, profile, done) => {
+    }, async (accessToken, refreshToken, profile_, done) => {
+        const profile = await request.get(`https://etu.utt.fr/api/users?access_token=${accessToken}`);
+        console.log(profile);
         return done(null, {
             profile: profile,
             token: accessToken
