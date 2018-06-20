@@ -33,7 +33,7 @@ router.get('/etuUTT', passport.authenticate('etuUTT', {
 
 router.get('/etuUTT/callback', passport.authenticate('etuUTT', { failureRedirect: '/auth' }), (req, res) => {
     req.session.token = req.user.token;
-    console.log(req.user);
+    req.session.displayName = req.user.profile.displayName;
     res.redirect('/auth');
 });
 

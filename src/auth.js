@@ -19,10 +19,13 @@ module.exports = (passport) => {
         clientSecret: process.env.ETUUTT_OAUTH_CLIENTSECRET,
         callbackURL: config.etuUTT.callbackURL
     }, async (accessToken, refreshToken, profile_, done) => {
-        const profile = await request.get(`https://etu.utt.fr/api/users?access_token=${accessToken}`);
-        console.log(profile);
+        const profile = await request.get(`https://etu.utt.fr/api/public/user/account?access_token=${accessToken}`);
+        const displayName = JSON.parse(profile).data.fullName;
+
         return done(null, {
-            profile: profile,
+            profile: {
+                displayName
+            },
             token: accessToken
         });
     }));
